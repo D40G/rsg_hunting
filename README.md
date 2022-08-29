@@ -12,7 +12,7 @@
 
 # Installation
 - ensure that the dependancies are added and started
-- add rsg_cokerun to your resources folder
+- add rsg_hunting to your resources folder
 - add items to your "\qb-core\shared\items.lua"
 - add images to your "\qb-inventory\html\images"
 
@@ -23,7 +23,7 @@ local disableHudComponents = {1, 2, 3, 4, 7, 9, 13, 19, 20, 21, 22}
 ```
 
 # Starting the resource
-- add the following to your server.cfg file : ensure rsg_cokerun
+- add the following to your server.cfg file : ensure rsg_hunting
 - restart your server
 
 # Support
