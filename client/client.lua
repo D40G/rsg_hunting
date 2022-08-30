@@ -446,11 +446,12 @@ AddEventHandler('rsg_hunting:clent:peltssoldMail', function(amount)
     end)
 end)
 
+-- map blip
 Citizen.CreateThread(function()
     parkranger = AddBlipForCoord(377.32, 791.65, 190.41)
     SetBlipSprite (parkranger, 526)
     SetBlipDisplay(parkranger, 4)
-    SetBlipScale  (parkranger, 0.9)
+    SetBlipScale  (parkranger, 0.55)
     SetBlipAsShortRange(parkranger, true)
     SetBlipColour(parkranger, 2)
     BeginTextCommandSetBlipName("STRING")
