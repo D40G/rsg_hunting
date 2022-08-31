@@ -464,20 +464,27 @@ end)
 
 RegisterNetEvent("rsg_hunting::client:getPermit")
 AddEventHandler("rsg_hunting::client:getPermit", function()
-	QBCore.Functions.Progressbar("pickup_sla", "Getting permit and equipment..", 5000, false, true, {
-		disableMovement = true,
-		disableCarMovement = true,
-		disableMouse = false,
-		disableCombat = true,
-	}, {
-		animDict = "mp_common",
-		anim = "givetake1_a",
-		flags = 8,
-	}, {}, {}, function() -- Done
-		TriggerServerEvent("rsg_hunting:server:getPermit")
-	end, function()
-		QBCore.Functions.Notify("Cancelled..", "error")
-	end)
+	local PlayerData = QBCore.Functions.GetPlayerData()
+	if PlayerData.metadata["licences"].weapon and QBCore.Functions.HasItem("weaponlicense") then
+		QBCore.Functions.Progressbar("pickup_sla", "Getting permit and equipment..", 5000, false, true, {
+			disableMovement = true,
+			disableCarMovement = true,
+			disableMouse = false,
+			disableCombat = true,
+		}, {
+			animDict = "mp_common",
+			anim = "givetake1_a",
+			flags = 8,
+		}, {}, {}, function() -- Done
+			TriggerServerEvent("rsg_hunting:server:getPermit")
+		end, function()
+			QBCore.Functions.Notify("Cancelled..", "error")
+		end)
+	else
+		QBCore.Functions.Notify("Ranger: you do not have a firearms license!", "error")
+		Wait(5000)
+		QBCore.Functions.Notify("Ranger: Speak with law enforcement to get one", "error")
+	end
 end)
 
 RegisterNetEvent('rsg_hunting:clent:peltssoldMail')
