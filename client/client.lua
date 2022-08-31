@@ -1,6 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 -- large kill
+-- -664053099 (Deer)
 exports['qb-target']:AddTargetModel(-664053099, {
     options = {
         {
@@ -10,24 +11,29 @@ exports['qb-target']:AddTargetModel(-664053099, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveLargeReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveLargeReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
@@ -46,24 +52,29 @@ exports['qb-target']:AddTargetModel(1682622302, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveMediumReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveMediumReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
@@ -81,24 +92,29 @@ exports['qb-target']:AddTargetModel(307287994, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveMediumReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveMediumReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
@@ -116,24 +132,29 @@ exports['qb-target']:AddTargetModel(-832573324, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveMediumReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveMediumReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
@@ -152,24 +173,29 @@ exports['qb-target']:AddTargetModel(-541762431, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveSmallReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveSmallReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
@@ -188,24 +214,29 @@ exports['qb-target']:AddTargetModel(-1430839454, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveSmallReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveSmallReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
@@ -224,24 +255,29 @@ exports['qb-target']:AddTargetModel(1457690978, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveSmallReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveSmallReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
@@ -260,24 +296,29 @@ exports['qb-target']:AddTargetModel(402729631, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveSmallReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveSmallReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
@@ -296,24 +337,29 @@ exports['qb-target']:AddTargetModel(111281960, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveSmallReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveSmallReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
@@ -332,24 +378,29 @@ exports['qb-target']:AddTargetModel(-745300483, {
 			action = function(entity)
 				local ped = PlayerPedId()
 				local weapon = GetSelectedPedWeapon(ped)
-				if weapon == `WEAPON_KNIFE` then
-					QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					}, {
-						animDict = "mp_common",
-						anim = "givetake1_a",
-						flags = 8,
-					}, {}, {}, function() -- Done
-						TriggerServerEvent("rsg_hunting:server:giveSmallReward")
-						DeleteEntity(entity)
-					end, function()
-						QBCore.Functions.Notify("Cancelled..", "error")
-					end)
+				local hasItem = QBCore.Functions.HasItem("huntingpermit", 1)
+				if hasItem then
+					if weapon == `WEAPON_KNIFE` then
+						QBCore.Functions.Progressbar("pickup_sla", "Processing your kill..", 5000, false, true, {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						}, {
+							animDict = "mp_common",
+							anim = "givetake1_a",
+							flags = 8,
+						}, {}, {}, function() -- Done
+							TriggerServerEvent("rsg_hunting:server:giveSmallReward")
+							DeleteEntity(entity)
+						end, function()
+							QBCore.Functions.Notify("Cancelled..", "error")
+						end)
+					else
+						QBCore.Functions.Notify("You are not holding a knife!", "error")
+					end
 				else
-					QBCore.Functions.Notify("You are not holding a knife!", "error")
+					QBCore.Functions.Notify("You do not have a permit for hunting!", "error")
 				end
 			end,
         },
