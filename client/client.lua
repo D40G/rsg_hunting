@@ -1,5 +1,35 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+	local hasItem = QBCore.Functions.HasItem("weapon_sniperrifle")
+	if hasItem then
+		hunting = true
+	else
+		hunting = false
+	end
+end)
+
+
+Citizen.CreateThread(function()
+    while true do
+        sleep = 1000
+		local pos = GetEntityCoords(PlayerPedId())
+		local zone = GetNameOfZone(pos.x, pos.y, pos.z)
+		if hunting == true then
+			if zone == 'CHIL' or zone == 'TONGVAV' or zone == 'GREATC' or zone == 'ZANCUDO' then
+				exports['qb-core']:DrawText('Hunting Zone','left')
+			else
+				local ped = PlayerPedId()
+				exports['qb-core']:DrawText('Outside Hunting Zone Weapons Disabled','left')
+				SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+			end
+		else
+			exports['qb-core']:HideText()
+		end
+        Wait(sleep)
+    end
+end)
+
 -- large kill
 -- -664053099 (Deer)
 exports['qb-target']:AddTargetModel(-664053099, {
@@ -438,6 +468,7 @@ RegisterNetEvent("rsg_hunting::client:sellPelts")
 AddEventHandler("rsg_hunting::client:sellPelts", function()
 	local ped = PlayerPedId()
 	SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+	
 	QBCore.Functions.Progressbar("pickup_sla", "Attempting to sell your pelts..", 5000, false, true, {
 		disableMovement = true,
 		disableCarMovement = true,
@@ -452,6 +483,7 @@ AddEventHandler("rsg_hunting::client:sellPelts", function()
 			if HasItems then
 				QBCore.Functions.TriggerCallback('rsg_hunting:server:GetItemData', function(count)
 					TriggerServerEvent("rsg_hunting:server:sellPelts", function(sold, peltsSold) end)
+					hunting = false
 				end)
 			else
 				QBCore.Functions.Notify("You are not holding the required items, have you been hunting?", "error")
@@ -477,6 +509,7 @@ AddEventHandler("rsg_hunting::client:getPermit", function()
 			flags = 8,
 		}, {}, {}, function() -- Done
 			TriggerServerEvent("rsg_hunting:server:getPermit")
+			hunting = true
 		end, function()
 			QBCore.Functions.Notify("Cancelled..", "error")
 		end)
