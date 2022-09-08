@@ -1,6 +1,5 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-
-local huntingzone = false
+local hunting = false
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 	local hasItem = QBCore.Functions.HasItem("weapon_sniperrifle")
@@ -18,12 +17,11 @@ Citizen.CreateThread(function()
 		local zone = GetNameOfZone(pos.x, pos.y, pos.z)
 		if hunting == true then
 			if zone == 'CHIL' or zone == 'TONGVAV' or zone == 'GREATC' or zone == 'ZANCUDO' then
-				huntingzone = true
-				--exports['qb-core']:DrawText('Hunting Zone','left')
-			else
+				exports['qb-core']:DrawText('Hunting Zone','left')
+			end
+			if zone ~= 'CHIL' or zone == 'TONGVAV' or zone == 'GREATC' or zone == 'ZANCUDO' then
 				local ped = PlayerPedId()
-				huntingzone = false
-				--exports['qb-core']:DrawText('Outside Hunting Zone Weapons Disabled','left')
+				exports['qb-core']:DrawText('Outside Hunting Zone Weapons Disabled','left')
 				SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
 			end
 		end
@@ -485,6 +483,7 @@ AddEventHandler("rsg_hunting::client:sellPelts", function()
 				QBCore.Functions.TriggerCallback('rsg_hunting:server:GetItemData', function(count)
 					TriggerServerEvent("rsg_hunting:server:sellPelts", function(sold, peltsSold) end)
 					hunting = false
+					TriggerEvent('qb-core:client:HideText')
 				end)
 			else
 				QBCore.Functions.Notify("You are not holding the required items, have you been hunting?", "error")
