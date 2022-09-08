@@ -1,5 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+local huntingzone = false
+
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 	local hasItem = QBCore.Functions.HasItem("weapon_sniperrifle")
 	if hasItem then
@@ -9,7 +11,6 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 	end
 end)
 
-
 Citizen.CreateThread(function()
     while true do
         sleep = 1000
@@ -17,14 +18,14 @@ Citizen.CreateThread(function()
 		local zone = GetNameOfZone(pos.x, pos.y, pos.z)
 		if hunting == true then
 			if zone == 'CHIL' or zone == 'TONGVAV' or zone == 'GREATC' or zone == 'ZANCUDO' then
-				exports['qb-core']:DrawText('Hunting Zone','left')
+				huntingzone = true
+				--exports['qb-core']:DrawText('Hunting Zone','left')
 			else
 				local ped = PlayerPedId()
-				exports['qb-core']:DrawText('Outside Hunting Zone Weapons Disabled','left')
+				huntingzone = false
+				--exports['qb-core']:DrawText('Outside Hunting Zone Weapons Disabled','left')
 				SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
 			end
-		else
-			exports['qb-core']:HideText()
 		end
         Wait(sleep)
     end
